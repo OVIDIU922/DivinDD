@@ -1,0 +1,96 @@
+/* Conteneur principal */
+form {
+    max-width: 600px; /* Largeur maximale du formulaire */
+    margin: 50px auto; /* Centrage du formulaire */
+    padding: 20px; /* Espacement interne */
+    border: 1px solid #e0e0e0; /* Bordure subtile */
+    border-radius: 10px; /* Coins arrondis */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère */
+    background-color: #fff; /* Couleur de fond blanche */
+  }
+  
+  /* Titre */
+  h2 {
+    text-align: center; /* Centrer le titre */
+    color: #333; /* Couleur du texte */
+    margin-bottom: 20px; /* Espacement en bas */
+  }
+  
+  /* Styles des champs de formulaire */
+  form div {
+    margin-bottom: 15px; /* Espacement en bas de chaque champ */
+  }
+  
+  label {
+    display: block; /* Afficher les labels comme des blocs */
+    margin-bottom: 5px; /* Espacement en bas */
+    font-weight: bold; /* Texte en gras */
+    color: #555; /* Couleur du texte */
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="date"],
+  input[type="file"],
+  select {
+    width: 100%; /* Prendre la largeur complète */
+    padding: 10px; /* Espacement interne */
+    border: 1px solid #ccc; /* Bordure */
+    border-radius: 5px; /* Coins arrondis */
+    transition: border-color 0.3s ease; /* Transition douce */
+  }
+  
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  input[type="date"]:focus,
+  input[type="file"]:focus,
+  select:focus {
+    border-color: #3f51b5; /* Couleur de bordure au focus */
+    outline: none; /* Retirer le contour par défaut */
+  }
+  
+  /* Bouton de soumission */
+  button {
+    display: block; /* Le bouton s'affiche comme un bloc */
+    width: 100%; /* Prendre la largeur complète */
+    padding: 10px; /* Espacement interne */
+    background-color: #3f51b5; /* Couleur de fond */
+    color: #fff; /* Couleur du texte */
+    border: none; /* Retirer les bordures */
+    border-radius: 5px; /* Coins arrondis */
+    font-size: 16px; /* Taille de la police */
+    font-weight: bold; /* Texte en gras */
+    cursor: pointer; /* Curseur de la souris */
+    transition: background-color 0.3s ease; /* Transition douce */
+    margin-top: 10px; /* Espacement en haut */
+  }
+  
+  button:hover {
+    background-color: #303f9f; /* Changement de couleur au survol */
+  }
+  
+  /* Message d'erreur de validation */
+  .ng-invalid.ng-touched:not(form) {
+    border-color: #e53935; /* Couleur de la bordure si le champ est invalide */
+  }
+  
+  .ng-valid.ng-touched {
+    border-color: #4caf50; /* Couleur de la bordure si le champ est valide */
+  }
+  
+  /* Image de profil */
+  input[type="file"] {
+    padding: 5px;
+  }
+  
+  @media (max-width: 600px) {
+    form {
+      padding: 15px;
+      margin: 20px;
+    }
+  
+    h2 {
+      font-size: 1.5em;
+    }
+  }
+  

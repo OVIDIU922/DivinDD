@@ -1,0 +1,143 @@
+
+<!--<header class="header">
+    <div class="header-left">
+      <input type="text" placeholder="Rechercher..." class="search-bar">
+    </div>
+    <div class="header-right">
+       
+      <!--<a href="/auth" class="icon-link">
+        <i class="fa fa-user"></i>
+      </a>--> 
+       <!--<a href="#" class="icon-link">
+         <i class="fa fa-shopping-cart"></i> <!-- Icône du panier -->
+       <!-- </a>
+    </div>
+</header>
+  <nav class="navigation">
+    <div class="logo">
+      <h1>DivinDD</h1>
+    </div>
+    <div class="nav-links">
+      <a href="#">Accueil</a>
+      <a href="#">Boutique</a>
+      <a href="#">Promo</a>
+      <a href="#">Service client</a>
+    </div>
+  </nav>
+
+  <!-- Section 1 : Image avec carré de texte et bouton -->
+<!--<section class="section-image">
+  <div class="overlay">
+    <div class="text-box">
+      <h1>Saison d'été</h1>
+      <button (click)="goToBoutique()">Boutique</button>
+    </div>
+  </div>
+</section>
+
+<!-- Section 2 : Trois images, le clic sur l'image centrale redirige vers la page Promo -->
+
+<!--<section class="section-promo">
+  <div class="promo-h">
+    <h1>INTEMPORELS</h1>
+    <h4>Les indispensables</h4>
+  </div>
+  <div class="promo-container">
+    <div class="promo-item">
+      <img src="/img/concept.jpg" alt="Promo 1">
+    </div>
+    <div class="promo-item promo-center" (click)="goToPromo()">
+      <img src="/img/datingapp.jpg" alt="Promo 2">
+    </div>
+    <div class="promo-item">
+      <img src="/img/nietjuh.jpg" alt="Promo 3">
+    </div>
+  </div>
+</section>
+<app-footer></app-footer>-->
+
+
+
+
+<header class="header">
+  <div class="header-left">
+    <input type="text" placeholder="Rechercher..." class="search-bar">
+  </div>
+  <div class="header-right">
+    <!-- Lien de connexion avec Angular Router -->
+    <a routerLink="/login" class="icon-link">
+      <i class="fa fa-user"></i> <!-- Icône de connexion -->
+    </a>
+    <!-- Icône du panier -->
+    <a routerLink="/cart" class="icon-link">
+      <i class="fa fa-shopping-cart"></i>
+    </a>
+  </div>
+</header>
+
+<nav class="navigation">
+  <div class="logo">
+    <img src="../assets/logo/logo1.jpg" alt="muie">
+    <h1>DivinDD</h1>
+  </div>
+  <div class="nav-links">
+    <a routerLink="/">Accueil</a>
+    <a routerLink="/boutique">Boutique</a>
+    <a routerLink="/promo">Promo</a>
+    <a routerLink="/service-client">Service client</a>
+  </div>
+</nav>
+
+
+<!-- home.component.html -->
+
+<!-- Section 1 : Image avec carré de texte et bouton -->
+<section class="section-image">
+  <div class="overlay">
+    <div class="text-box">
+      <h1 class="main-title">BOUTIQUE</h1>
+      <button class="main-button" routerLink="/boutique">Acheter</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- Section 2 : Promotions et Intemporels -->
+
+<!-- Section 2 -->
+<section class="section-gallery">
+  <div class="section-header">
+    <h2>INTEMPORELS</h2>
+    <p>Les indispensables</p>
+    <hr />
+  </div>
+  <div class="gallery">
+    <!-- Carte 1 : Jupe -->
+    <div class="gallery-item">
+      <img src="../assets/img/appareilphot.jpg" alt="Jupe plissée mi-longue">
+      <div class="gallery-text">
+        <button class="gallery-button" (mouseover)="showDetails('jupe')">Jupe plissée mi-longue</button>
+        <p class="details" *ngIf="hoveredItem === 'jupe'">Découvrez les détails de la jupe plissée.</p>
+      </div>
+    </div>
+    <!-- Carte 2 : Promo -->
+    <div class="gallery-item">
+      <img src="../assets/img/sac.jpg" alt="Promo">
+      <div class="gallery-text">
+        <button class="gallery-button" routerLink="/promo">PROMO</button>
+      </div>
+    </div>
+    <!-- Carte 3 : Lunettes -->
+    <div class="gallery-item">
+      <img src="../assets/img/pexel.jpg" alt="">
+      <div class="gallery-text">
+        <button class="gallery-button" (mouseover)="showDetails('lunettes')">Lunettes à monture vintage</button>
+        <p class="details" *ngIf="hoveredItem === 'lunettes'">Découvrez les détails des lunettes vintage.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-footer></app-footer>
+   
+    

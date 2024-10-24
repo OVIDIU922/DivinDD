@@ -1,0 +1,197 @@
+.header {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .search-bar {
+    padding: 8px;
+    font-size: 10px;
+    width: 200px;
+    border-radius: 10px;
+  }
+  
+  .header-right .icon-link {
+    margin-left: 20px;
+    font-size: 20px;
+    color: #000;
+    text-decoration: none;
+  }
+  
+  .header-right .icon-link:hover {
+    color: #555;
+  }
+  .navigation {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 15px 10px;
+    background-color: #a34a4a;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .logo h1 {
+    width: 70px; /* Ajuste la taille du logo */
+    color: aqua;
+  }
+  
+  .nav-links a {
+    margin-left: 100px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .nav-links a:hover {
+    color: #555;
+  }
+/* fin nav*/
+
+/* Section 1 : Image d'arrière-plan avec carré centré */
+.section-image {
+  position: relative;
+  height: 70vh; /* Hauteur de la section à 70% de la vue */
+  background-image: url('../assets/img/ecouteurs.jpg'); /* Image d'arrière-plan */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2); /* Effet sombre sur l'image */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-box {
+  background-color: rgba(255, 255, 255, 0.7); /* Carré transparent blanc */
+  padding: 40px 60px;
+  border-radius: 5px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center; /* Centrer le texte */
+}
+
+.main-title {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #333; /* Couleur du texte */
+  letter-spacing: 2px;
+}
+
+.main-button {
+  margin-top: 20px;
+  padding: 12px 25px;
+  font-size: 1.2rem;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.main-button:hover {
+  background-color: #444;
+}
+/* fin section 1*/
+
+
+/* Section 2 : Galerie de produits */
+
+/* Section 2 : Galerie avec texte et images */
+.section-gallery {
+  width: 70%;
+  height: 70vh;
+  margin: 0 auto;
+  padding: 60px 0;
+  text-align: center;
+}
+
+.section-header h2 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.section-header p {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.section-header hr {
+  width: 100px;
+  height: 2px;
+  background-color: #333;
+  margin: 10px auto;
+}
+
+.gallery {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Ajouté pour l'alignement vertical */
+  margin-top: 30px;
+}
+
+.gallery-item {
+  width: 60%;
+  position: relative;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+.gallery-text {
+  margin-top: 15px;
+}
+
+.gallery-button {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.gallery-button:hover {
+  background-color: #444;
+}
+
+.details {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Design Responsive */
+@media (max-width: 768px) {
+  .gallery {
+    flex-direction: column;
+  }
+
+  .gallery-item {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}

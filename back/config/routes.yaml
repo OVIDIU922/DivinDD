@@ -1,0 +1,40 @@
+controllers:
+    resource: ../src/Controller/
+    type: attribute
+             
+
+# Ajoutons explicitement les routes pour le UserController
+api_users:
+    path: /api/users/{id}
+    controller: App\Controller\UserController::updateUser
+    methods: [POST]
+
+api_user_profile:
+    path: /api/user/profile
+    controller: App\Controller\UserController::getUserProfile
+    methods: [GET]
+
+api_change_password:
+    path: /api/user/change-password
+    controller: App\Controller\UserController::changePassword
+    methods: [POST]
+
+api_delete_account:
+    path: /api/user/delete-account
+    controller: App\Controller\UserController::deleteAccount
+    methods: [DELETE]
+
+api_register_get:
+    path: /api/register
+    controller: App\Controller\RegistrationController::getRegister
+    methods: [GET]
+
+api_register_post:
+    path: /api/register
+    controller: App\Controller\RegistrationController::register
+    methods: [POST]
+
+api_login_check:
+    path: /api/login_check
+    methods: [POST]
+

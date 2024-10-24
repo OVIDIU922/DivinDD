@@ -1,0 +1,95 @@
+<h2>Compléter votre profil</h2>
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label>Nom et prénom:</label>
+    <input type="text" formControlName="name" />
+    <div *ngIf="profileForm.get('name')?.invalid && profileForm.get('name')?.touched">
+      <small class="error-text">Le nom est requis.</small>
+    </div>
+  </div>
+  
+  <div>
+    <label>Adresse e-mail:</label>
+    <input type="email" formControlName="email" [disabled]="true" />
+  </div>
+  
+  <div>
+    <label>Téléphone:</label>
+    <input type="text" formControlName="phone" />
+    <div *ngIf="profileForm.get('phone')?.invalid && profileForm.get('phone')?.touched">
+      <small class="error-text">Le téléphone est requis (10 chiffres).</small>
+    </div>
+  </div>
+  
+  <div>
+    <label>Adresse:</label>
+    <input type="text" formControlName="address" />
+    <div *ngIf="profileForm.get('address')?.invalid && profileForm.get('address')?.touched">
+      <small class="error-text">L'adresse est requise.</small>
+    </div>
+  </div>
+  
+  <div>
+    <label>Date de naissance:</label>
+    <input type="date" formControlName="birthdate" />
+    <div *ngIf="profileForm.get('birthdate')?.invalid && profileForm.get('birthdate')?.touched">
+      <small class="error-text">La date de naissance est requise.</small>
+    </div>
+  </div>
+  
+  <div>
+    <label>Genre:</label>
+    <select formControlName="gender">
+      <option value="Homme">Homme</option>
+      <option value="Femme">Femme</option>
+      <option value="other">Autre</option>
+    </select>
+    <div *ngIf="profileForm.get('gender')?.invalid && profileForm.get('gender')?.touched">
+      <small class="error-text">Le genre est requis.</small>
+    </div>
+  </div>
+  
+  <div>
+    <label>Photo de profil:</label>
+    <input type="file" (change)="onFileSelected($event)" />
+  </div>
+  
+  <button type="submit" [disabled]="!profileForm.valid">Inscrivez-vous</button>
+</form>
+
+<!--<h2>Compléter votre profil</h2>
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label>Nom et prénom:</label>
+    <input type="text" formControlName="name" />
+  </div>
+  <div>
+    <label>Adresse e-mail:</label>
+    <input type="email" formControlName="email" [disabled]="true" />
+  </div>
+  <div>
+    <label>Téléphone:</label>
+    <input type="text" formControlName="phone" />
+  </div>
+  <div>
+    <label>Adresse:</label>
+    <input type="text" formControlName="address" />
+  </div>
+  <div>
+    <label>Date de naissance:</label>
+    <input type="date" formControlName="birthdate" />
+  </div>
+  <div>
+    <label>Genre:</label>
+    <select formControlName="gender">
+      <option value="Homme">Homme</option>
+      <option value="Femme">Femme</option>
+      <option value="other">Autre</option>
+    </select>
+  </div>
+  <div>
+    <label>Photo de profil:</label>
+    <input type="file" (change)="onFileSelected($event)" />
+  </div>
+  <button type="submit" [disabled]="!profileForm.valid">Inscrivez-vous</button>
+</form>-->

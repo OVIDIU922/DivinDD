@@ -1,0 +1,43 @@
+<h3>Modifier les informations personnelles</h3>
+<form (ngSubmit)="onSubmit()">
+  <div>
+    <label for="name">Nom et prénom</label>
+    <input type="text" id="name" [(ngModel)]="user.name" name="name" required />
+  </div>
+  
+  <div>
+    <label for="email">Adresse e-mail</label>
+    <input type="email" id="email" [(ngModel)]="user.email" name="email" required />
+  </div>
+  
+  <div>
+    <label for="phone">Téléphone</label>
+    <input type="text" id="phone" [(ngModel)]="user.phone" name="phone" />
+  </div>
+  
+  <div>
+    <label for="address">Adresse</label>
+    <input type="text" id="address" [(ngModel)]="user.address" name="address" />
+  </div>
+  
+  <div>
+    <label for="birthdate">Date de naissance</label>
+    <input type="date" id="birthdate" [(ngModel)]="user.birthdate" name="birthdate" />
+  </div>
+  
+  <div>
+    <label for="gender">Genre</label>
+    <select id="gender" [(ngModel)]="user.gender" name="gender">
+      <option value="male">Masculin</option>
+      <option value="female">Féminin</option>
+      <option value="other">Autre</option>
+    </select>
+  </div>
+  
+  <div>
+    <label for="profilePicture">Photo de profil</label>
+    <input type="file" id="profilePicture" (change)="onFileSelected($event)" />
+  </div>
+  
+  <button type="submit">Enregistrer les modifications</button>
+</form>

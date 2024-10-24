@@ -1,0 +1,68 @@
+<div class="profile-container" *ngIf="userProfile">
+    <h1>Mon Profil</h1>
+  
+    <!-- Section 1: Informations personnelles -->
+    <section class="personal-info">
+      <h2>Informations personnelles</h2>
+      <img [src]="userProfile.profilePicture" alt="Photo de profil" class="profile-picture" />
+      <p><strong>Nom et prénom:</strong> {{ userProfile.name }}</p>
+      <p><strong>Adresse e-mail:</strong> {{ userProfile.email }}</p>
+      <p><strong>Téléphone:</strong> {{ userProfile.phone }}</p>
+      <p><strong>Adresse:</strong> {{ userProfile.address }}</p>
+      <p><strong>Date de naissance:</strong> {{ userProfile.birthdate }}</p>
+      <p><strong>Genre:</strong> {{ userProfile.gender }}</p>
+    </section>
+  
+    <!-- Section 2: Commandes -->
+    <section class="orders">
+      <h2>Historique des commandes</h2>
+      <div *ngFor="let order of userProfile.orders">
+        <p><strong>Date de commande:</strong> {{ order.date }}</p>
+        <p><strong>Numéro de commande:</strong> {{ order.orderNumber }}</p>
+        <ul>
+          <li *ngFor="let product of order.products">
+            <img [src]="product.image" alt="Product image" />
+            <span>{{ product.description }}</span>
+          </li>
+        </ul>
+        <p><strong>Statut de la commande:</strong> {{ order.status }}</p>
+        <p><strong>Montant total de la commande:</strong> {{ order.total }}</p>
+      </div>
+    </section>
+  
+    <!-- Section 3: Favoris -->
+    <section class="favorites">
+      <h2>Produits favoris</h2>
+      <div *ngFor="let product of userProfile.favorites">
+        <img [src]="product.image" alt="Product image" />
+        <p>{{ product.description }}</p>
+        <p>Prix: {{ product.price }} €</p>
+      </div>
+    </section>
+  
+    <!-- Section 4: Récompenses et avantages -->
+    <section class="rewards">
+      <h2>Récompenses et avantages</h2>
+      <p>Points de fidélité : {{ userProfile.loyaltyPoints }}</p>
+      <ul>
+        <li *ngFor="let advantage of userProfile.advantages">{{ advantage }}</li>
+      </ul>
+    </section>
+  
+    <!-- Section 5: Paramètres de compte -->
+    <section class="account-settings">
+      <h2>Paramètres de compte</h2>
+      <button (click)="updateInfo()">Modifier les informations personnelles</button>
+      <button (click)="changePassword()">Changer le mot de passe</button>
+      <button (click)="deleteAccount()">Supprimer le compte</button>
+    </section>
+    
+    <!-- Section 6: Notifications -->
+    <section class="notifications">
+      <h2>Notifications</h2>
+      <ul>
+        <li *ngFor="let notification of userProfile.notifications">{{ notification }}</li>
+      </ul>
+    </section>
+  </div>
+  

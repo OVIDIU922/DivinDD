@@ -1,0 +1,38 @@
+<div class="form-container">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <h2>Inscription</h2>
+    
+    <div class="form-group">
+      <label for="name">Nom et Prénom</label>
+      <input type="text" id="name" formControlName="name" placeholder="Entrez votre nom et prénom">
+      <div *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched" class="error-message">
+        Nom requis.
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" formControlName="email" placeholder="Entrez votre email">
+      <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="error-message">
+        Un email valide est requis.
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label for="password">Mot de passe</label>
+      <div class="password-wrapper">
+        <input type="password" id="register-password" formControlName="password" placeholder="Entrez votre mot de passe">
+        <span class="toggle-password" (click)="togglePasswordVisibility('register-password')">👁️</span>
+      </div>
+      <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="error-message">
+        Mot de passe requis (au moins 6 caractères).
+      </div>
+    </div>
+    
+    <button type="submit" [disabled]="registerForm.invalid">S'inscrire</button>
+    
+    <p class="login-link">Déjà inscrit? <a routerLink="/login">Connectez-vous</a></p>
+  </form>
+</div>
+<app-footer></app-footer>
+
