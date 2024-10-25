@@ -43,12 +43,18 @@ class UserController extends AbstractController
         return new JsonResponse($userData);
     }
 
-    #[Route('/api/users/{id}', name: 'update_user', methods: ['POST'])]
-    public function updateUser(Request $request, User $user, ValidatorInterface $validator): JsonResponse
+    #[Route('/api/user/complete-profile', name: 'complete_user_profile', methods: ['POST'])]
+    public function completeUserProfile(Request $request, ValidatorInterface $validator): JsonResponse
     {
-        $data = $request->toArray(); // Use toArray() for JSON input
+        $user = $this->getUser();
+        if (!$user instanceof User) {
+            return $this->json(['error' => 'Utilisateur non trouvé'], 404);
+        }
 
-        // Validate data
+        // Récupérer les données JSON envoyées
+        $data = $request->toArray();
+
+        // Valider les données
         $constraints = new Assert\Collection([
             'name' => new Assert\Length(['min' => 3]),
             'phone' => new Assert\Regex('/^\d{10}$/'),
@@ -62,7 +68,14 @@ class UserController extends AbstractController
             return $this->json(['error' => 'Données invalides', 'details' => (string)$violations], 400);
         }
 
-        // Handle file upload
+        // Mettre à jour les informations de l'utilisateur
+        $user->setName($data['name']);
+        $user->setPhone($data['phone']);
+        $user->setAddress($data['address']);
+        $user->setBirthdate(new \DateTime($data['birthdate']));
+        $user->setGender($data['gender']);
+
+        // Gérer la mise à jour de la photo de profil (optionnel)
         $profilePicture = $request->files->get('profilePicture');
         if ($profilePicture) {
             $newFilename = $this->uploadProfilePicture($profilePicture);
@@ -72,18 +85,60 @@ class UserController extends AbstractController
             $user->setProfilePicture($newFilename);
         }
 
-        // Update user data
+        // Sauvegarder les informations mises à jour
+        $this->entityManager->persist($user);
+        $this->entityManager->flush();
+
+        return new JsonResponse(['message' => 'Profil complété avec succès'], 200);
+    }
+
+    #[Route('/api/user/update-info', name: 'update_user_info', methods: ['PUT'])]
+    public function updateUserInfo(Request $request, ValidatorInterface $validator): JsonResponse
+    {
+        $user = $this->getUser();
+        if (!$user instanceof User) {
+            return $this->json(['error' => 'Utilisateur non trouvé'], 404);
+        }
+
+        // Récupérer les données de la requête
+        $data = $request->toArray();
+
+        // Valider les nouvelles informations que l'utilisateur veut mettre à jour
+        $constraints = new Assert\Collection([
+            'name' => new Assert\Length(['min' => 3]),
+            'phone' => new Assert\Regex('/^\d{10}$/'),
+            'address' => new Assert\NotBlank(),
+            'birthdate' => new Assert\Date(),
+            'gender' => new Assert\Choice(['choices' => ['male', 'female', 'other']]),
+        ]);
+        $violations = $validator->validate($data, $constraints);
+
+        if (count($violations) > 0) {
+            return $this->json(['error' => 'Données invalides', 'details' => (string)$violations], 400);
+        }
+
+        // Mettre à jour les informations de l'utilisateur
         $user->setName($data['name']);
         $user->setPhone($data['phone']);
         $user->setAddress($data['address']);
         $user->setBirthdate(new \DateTime($data['birthdate']));
         $user->setGender($data['gender']);
 
-        // Persist changes
+        // Gérer la mise à jour de la photo de profil
+        $profilePicture = $request->files->get('profilePicture');
+        if ($profilePicture) {
+            $newFilename = $this->uploadProfilePicture($profilePicture);
+            if ($newFilename === null) {
+                throw new BadRequestHttpException("Erreur lors de l'upload de l'image.");
+            }
+            $user->setProfilePicture($newFilename);
+        }
+
+        // Sauvegarder les modifications
         $this->entityManager->persist($user);
         $this->entityManager->flush();
 
-        return new JsonResponse(['message' => 'Profil mis à jour avec succès'], 200);
+        return new JsonResponse(['message' => 'Informations mises à jour avec succès'], 200);
     }
 
     private function uploadProfilePicture($file): ?string
@@ -95,9 +150,10 @@ class UserController extends AbstractController
             $file->move($this->getParameter('profile_pictures_directory'), $newFilename);
             return $newFilename;
         } catch (FileException $e) {
-            return null; // Handle error accordingly
+            return null; // En cas d'erreur pendant l'upload
         }
     }
+
 
     #[Route('/api/user/change-password', name: 'change_password', methods: ['POST'])]
     public function changePassword(Request $request, UserPasswordHasherInterface $passwordHasher): JsonResponse

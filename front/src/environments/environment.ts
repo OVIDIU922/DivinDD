@@ -1,5 +1,5 @@
 export const environment = {
     production: false,
-    apiUrl: 'http://localhost:8000/api' // URL de l'API de développement
+    apiUrl: 'http://api.divinDD.wip' // URL de l'API de développement
   };
   

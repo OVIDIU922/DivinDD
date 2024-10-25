@@ -1,0 +1,9 @@
+divinDD.wip {
+	tls internal
+	reverse_proxy http://localhost:4200
+}
+
+api.divinDD.wip {
+	tls internal
+	reverse_proxy http://localhost:8000
+}

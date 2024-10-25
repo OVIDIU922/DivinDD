@@ -27,10 +27,10 @@ export class UserService {
     );
   }
 
-  // Mettre à jour les informations d'un utilisateur spécifique
-  updateUser(id: number, userData: FormData): Observable<any> {
+   // Compléter le profil de l'utilisateur
+   completeProfile(userData: FormData): Observable<any> {
     const headers = this.getAuthHeaders();
-    return this.http.put<any>(`${this.apiUrl}/${id}`, userData, { headers }).pipe(
+    return this.http.post(`${this.apiUrl}/complete-profile`, userData, { headers }).pipe(
       catchError(this.handleError)
     );
   }
@@ -47,10 +47,10 @@ export class UserService {
     );
   }
 
-  // Mettre à jour les informations personnelles de l'utilisateur
-  updateUserInfo(userInfo: any): Observable<any> {
+  // Mettre à jour les informations utilisateur
+  updateUserInfo(userData: FormData): Observable<any> {
     const headers = this.getAuthHeaders();
-    return this.http.put(`${this.apiUrl}/update`, userInfo, { headers }).pipe(
+    return this.http.put(`${this.apiUrl}/update-info`, userData, { headers }).pipe(
       catchError(this.handleError)
     );
   }

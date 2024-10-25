@@ -9,3 +9,4 @@ install-symfony: ## Install symfony part
 install:
 	npm install
 	make install-symfony
+

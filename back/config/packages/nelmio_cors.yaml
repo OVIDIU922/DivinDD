@@ -1,14 +1,15 @@
 nelmio_cors:
     defaults:
-        allow_origin: ['http://localhost:4200'] # Remplacez par votre URL Angular si différente
+        allow_origin: ['http://divinDD.wip'] # Remplacez par votre URL Angular si différente
         allow_credentials: true
-        allow_headers: ['Content-Type', 'Authorization', 'multipart/form-data']
+        allow_headers: ['Content-Type', 'Authorization', 'multipart/form-data', 'X-Requested-With']
         expose_headers: ['Link']
         allow_methods: ['POST', 'GET', 'OPTIONS', 'DELETE', 'PUT', 'PATCH']
         max_age: 3600
     paths:
         '^/api/': # Cible uniquement les routes commençant par /api/
-            allow_origin: ['http://localhost:4200']
-            allow_headers: ['Content-Type', 'Authorization', 'multipart/form-data']
+            allow_origin: ['http://divinDD.wip']
+            allow_credentials: true
+            allow_headers: ['*']
             allow_methods: ['POST', 'GET', 'OPTIONS', 'DELETE', 'PUT', 'PATCH']
             max_age: 3600
