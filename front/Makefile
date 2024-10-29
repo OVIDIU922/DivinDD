@@ -10,3 +10,6 @@ install:
 	npm install
 	make install-symfony
 
+run:
+	ng serve -o
+

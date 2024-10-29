@@ -1,0 +1,9 @@
+divindd.wip {
+	tls internal
+	reverse_proxy localhost:4200
+}
+
+api.divindd.wip {
+	tls internal
+	reverse_proxy localhost:8000
+}

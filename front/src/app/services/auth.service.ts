@@ -11,7 +11,7 @@ import { tap } from 'rxjs/operators';
 export class AuthService {
   
   //private apiUrl = 'http://127.0.0.1:8000/api'; // URL de ton API Symfony
-  private apiUrl = 'http://api.divinDD.wip/api'; // URL de ton API Symfony
+  private apiUrl = 'https://api.divindd.wip/api'; // URL de ton API Symfony
   
   constructor(private http: HttpClient, private router: Router) {}
 

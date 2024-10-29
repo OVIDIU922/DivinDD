@@ -1,6 +1,6 @@
 {
     "/api": {
-      "target": "https://api.divinDD.wip",
+      "target": "https://api.divindd.wip",
       "secure": false,
       "changeOrigin": true,
       "logLevel": "debug"

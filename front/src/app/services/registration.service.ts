@@ -11,7 +11,7 @@ import { catchError } from 'rxjs/operators';
 export class RegistrationService {
 
   //private apiUrl = 'http://127.0.0.1:8000/api/register'; // URL de votre API Symfony
-  private apiUrl = 'http://api.divinDD.wip/api/register'; // URL de ton API Symfony
+  private apiUrl = 'https://api.divindd.wip/api/register'; // URL de ton API Symfony
 
 
   constructor(private http: HttpClient, private router: Router) {}
